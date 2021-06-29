@@ -72,6 +72,14 @@ public class bAc {
         }
     }
 
+    public static void userNames() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("User 1, enter your name: ");
+        userOneName = in.nextLine();
+        System.out.println("User 2, enter your name: ");
+        userTwoName = in.nextLine();
+    }
+
     public static void countBullsAndCows() {
         if (bull==1 && cow != 1) {
             System.out.println("You have " + bull + " bull and " + cow + " cows");
@@ -85,7 +93,7 @@ public class bAc {
     }
 
     public static void singlePlayerOption(int randomNumberForUserOne) {
-        System.out.println("Enter number: ");
+        System.out.println("Enter your number: ");
 
         do {
             bull = 0; cow = 0;
@@ -118,14 +126,6 @@ public class bAc {
             }
 
         } while (true);
-    }
-
-    public static void userNames() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("User 1, enter your name: ");
-        userOneName = in.nextLine();
-        System.out.println("User 2, enter your name: ");
-        userTwoName = in.nextLine();
     }
 
     public static void multiPlayerOption (int randomNumberForUserOne, int randomNumberForUserTwo) {
