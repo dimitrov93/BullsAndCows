@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class bAc {
     static int bull, cow;
+    static String userOneName, userTwoName;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -119,9 +120,17 @@ public class bAc {
         } while (true);
     }
 
-    public static void multiPlayerOption (int randomNumberForUserOne, int randomNumberForUserTwo) {
-        while (multiPlayerUserOne(randomNumberForUserOne, randomNumberForUserTwo) < 1) {
+    public static void userNames() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("User 1, enter your name: ");
+        userOneName = in.nextLine();
+        System.out.println("User 2, enter your name: ");
+        userTwoName = in.nextLine();
+    }
 
+    public static void multiPlayerOption (int randomNumberForUserOne, int randomNumberForUserTwo) {
+        userNames();
+        while (multiPlayerUserOne(randomNumberForUserOne, randomNumberForUserTwo) < 1) {
             multiPlayerUserOne(randomNumberForUserOne, randomNumberForUserTwo);
             if (multiPlayerUserTwo(randomNumberForUserTwo, randomNumberForUserOne) > 1)
             {
@@ -132,7 +141,7 @@ public class bAc {
     }
 
     public static int multiPlayerUserOne(int randomNumberForUserOne, int randomNumberForUserTwo) {
-        System.out.println("User 1, enter number: ");
+        System.out.println(userOneName + ", enter number: ");
         int userOneNumber = userNumber();
         do {
             bull = 0; cow = 0;
@@ -160,7 +169,7 @@ public class bAc {
             countBullsAndCows();
 
             if (bull == 4) {
-                System.out.println("Congratulations, User 1! You WIN! ");
+                System.out.println("Well played, " + userOneName + "! You WIN! ");
                 break;
             } else  {
                 multiPlayerUserTwo(randomNumberForUserTwo, randomNumberForUserOne);
@@ -174,7 +183,7 @@ public class bAc {
 
 
     public static int multiPlayerUserTwo(int randomNumberForUserTwo, int randomNumberForUserOne) {
-        System.out.println("User 2, enter number: ");
+        System.out.println(userTwoName + ", enter number: ");
         int userTwoNumber = userNumber();
 
         do {
@@ -203,7 +212,7 @@ public class bAc {
             countBullsAndCows();
 
             if (bull == 4) {
-                System.out.println("Well played, User 2! You WIN! ");
+                System.out.println("Well played, " + userTwoName + "! You WIN! ");
                 break;
             } else {
                 multiPlayerUserOne(randomNumberForUserOne, randomNumberForUserTwo);

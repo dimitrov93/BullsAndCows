@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class bAcVer2 {
+    static String userOneName, userTwoName;
     static int bull, cow;
 
     public static void main(String[] args) {
@@ -114,7 +115,16 @@ public class bAcVer2 {
         } while (bull != 4);
     }
 
+    public static void userNames() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("User 1, enter your name: ");
+        userOneName = in.nextLine();
+        System.out.println("User 2, enter your name: ");
+        userTwoName = in.nextLine();
+    }
+
     public static void multiPlayerOption(int[] randomNumberForUserOne, int[] randomNumberForUserTwo) {
+        userNames();
         while (multiPlayerUserOne(randomNumberForUserOne, randomNumberForUserTwo) < 1) {
 
             multiPlayerUserOne(randomNumberForUserOne, randomNumberForUserTwo);
@@ -126,7 +136,7 @@ public class bAcVer2 {
     }
 
     public static int multiPlayerUserOne(int[] randomNumberForUserOneArray, int[] randomNumberForUserTwoArray) {
-        System.out.println("User 1, enter number: ");
+        System.out.println(userOneName + ", enter number: ");
         int[] userFinalNumber = userNumber();
         do {
             bull = 0; cow = 0;
@@ -144,6 +154,7 @@ public class bAcVer2 {
 
             resultForBullsAndCows(bull, cow);
             if (bull == 4) {
+                System.out.println("Well played, " + userOneName + "! You WIN! ");
                 break;
             } else {
                 multiPlayerUserTwo(randomNumberForUserTwoArray, randomNumberForUserOneArray);
@@ -155,7 +166,7 @@ public class bAcVer2 {
     }
 
     public static int multiPlayerUserTwo(int[] randomNumberForUserTwo, int[] randomNumberForUserOne) {
-        System.out.println("User 2, enter number: ");
+        System.out.println(userTwoName + ", enter number: ");
         int[] userFinalNumber = userNumber();
 
         do {
@@ -174,6 +185,7 @@ public class bAcVer2 {
 
             resultForBullsAndCows(bull, cow);
             if (bull == 4) {
+                System.out.println("Well played, " + userTwoName + "! You WIN! ");
                 break;
             } else {
                 multiPlayerUserOne(randomNumberForUserOne, randomNumberForUserTwo);
@@ -195,8 +207,5 @@ public class bAcVer2 {
             System.out.println("You have " + bull + " bulls and " + cow + " cows");
         }
 
-        if (bull == 4) {
-            System.out.println("Congratulations! You WIN! ");
-        }
     }
 }
