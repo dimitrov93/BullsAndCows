@@ -31,7 +31,7 @@ public class bAcVer2 {
         switch (userOption) {
             case 1 -> singlePlayerOption(randomNumberForUserOneArray);
             case 2 -> multiPlayerOption(randomNumberForUserOneArray, randomNumberForUserTwoArray);
-            default -> System.out.println("Have a great day!");
+            default -> System.out.println("Have a great day ahead and stay safe!");
         }
     }
 
@@ -94,8 +94,28 @@ public class bAcVer2 {
         return userNumberArray;
     }
 
+    public static void userNames() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("User 1, enter your name: ");
+        userOneName = in.nextLine();
+        System.out.println("User 2, enter your name: ");
+        userTwoName = in.nextLine();
+    }
+
+    public static void resultForBullsAndCows(int bull, int cow) {
+        if (bull == 1 && cow != 1) {
+            System.out.println("You have " + bull + " bull and " + cow + " cows");
+        } else if (bull != 1 && cow == 1) {
+            System.out.println("You have " + bull + " bulls and " + cow + " cow");
+        } else if (bull == 1 && cow == 1) {
+            System.out.println("You have " + bull + " bull and " + cow + " cow");
+        } else {
+            System.out.println("You have " + bull + " bulls and " + cow + " cows");
+        }
+    }
+
     public static void singlePlayerOption(int[] randomNumberForUserOneArray) {
-        System.out.println("Enter number: ");
+        System.out.println("Enter your number: ");
 
         do {
             bull = 0; cow = 0;
@@ -112,15 +132,10 @@ public class bAcVer2 {
                 }
             }
             resultForBullsAndCows(bull, cow);
+            if (bull == 4) {
+                System.out.println("Well played! You WIN! ");
+            }
         } while (bull != 4);
-    }
-
-    public static void userNames() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("User 1, enter your name: ");
-        userOneName = in.nextLine();
-        System.out.println("User 2, enter your name: ");
-        userTwoName = in.nextLine();
     }
 
     public static void multiPlayerOption(int[] randomNumberForUserOne, int[] randomNumberForUserTwo) {
@@ -136,7 +151,7 @@ public class bAcVer2 {
     }
 
     public static int multiPlayerUserOne(int[] randomNumberForUserOneArray, int[] randomNumberForUserTwoArray) {
-        System.out.println(userOneName + ", enter number: ");
+        System.out.println(userOneName + ", enter your number: ");
         int[] userFinalNumber = userNumber();
         do {
             bull = 0; cow = 0;
@@ -166,7 +181,7 @@ public class bAcVer2 {
     }
 
     public static int multiPlayerUserTwo(int[] randomNumberForUserTwo, int[] randomNumberForUserOne) {
-        System.out.println(userTwoName + ", enter number: ");
+        System.out.println(userTwoName + ", enter your number: ");
         int[] userFinalNumber = userNumber();
 
         do {
@@ -196,16 +211,4 @@ public class bAcVer2 {
         return 1;
     }
 
-    public static void resultForBullsAndCows(int bull, int cow) {
-        if (bull == 1 && cow != 1) {
-            System.out.println("You have " + bull + " bull and " + cow + " cows");
-        } else if (bull != 1 && cow == 1) {
-            System.out.println("You have " + bull + " bulls and " + cow + " cow");
-        } else if (bull == 1 && cow == 1) {
-            System.out.println("You have " + bull + " bull and " + cow + " cow");
-        } else {
-            System.out.println("You have " + bull + " bulls and " + cow + " cows");
-        }
-
-    }
 }
